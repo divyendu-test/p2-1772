@@ -1,0 +1,26 @@
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:prisma@localhost:3306/p2-unreachable"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ahoy_events {
+  created_at DateTime?
+  id         String    @id
+  name       String?
+  properties String?
+  time       DateTime?
+  type       String?
+  updated_at DateTime?
+  user_id    Int?
+  visit_id   String?
+
+  @@index([id], name: "index_ahoy_events_on_id")
+  @@index([time], name: "index_ahoy_events_on_time")
+  @@index([type], name: "index_ahoy_events_on_type")
+  @@index([user_id], name: "index_ahoy_events_on_user_id")
+  @@index([visit_id], name: "index_ahoy_events_on_visit_id")
+}
